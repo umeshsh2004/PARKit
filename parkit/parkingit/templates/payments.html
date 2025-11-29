@@ -1,0 +1,185 @@
+<style>
+    /* Base styling for the page header */
+header {
+    text-align: center;
+    color: #ffffff;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #cccccc;
+}
+
+/* Styling for the Contact Us section container */
+section {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 25px;
+    border: 2px solid #444;
+    border-radius: 10px;
+    background-color: #1c1c1c;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+    color: #e0e0e0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Section hover effect */
+section:hover {
+    transform: scale(1.02);
+    background-color: #222;
+}
+
+/* Form label styling */
+section h2 {
+    color: #ffffff;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+form label {
+    font-size: 1em;
+    color: #bbbbbb;
+}
+
+/* Input fields and textarea styling */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 1em;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus,
+form textarea:focus {
+    border-color: #555;
+    background-color: #333;
+}
+
+/* Radio buttons and labels */
+form input[type="radio"] {
+    margin-right: 5px;
+}
+
+form label[for="email-contact"],
+form label[for="phone-contact"] {
+    font-size: 1em;
+    color: #d3d3d3;
+    margin-left: 5px;
+}
+
+/* Submit button styling */
+form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #ffffff;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+form button[type="submit"]:active {
+    background-color: #333;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    section {
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    form button[type="submit"] {
+        font-size: 1em;
+    }
+}
+</style>
+
+{% extends "master.html" %}
+{% block title %} ParkIT Payment Gateway {% endblock %}
+{% block content %}
+    <header>
+        <h1>Payment Gateway</h1>
+        <p style="text-align:center;">Complete your payment below</p>
+    </header>
+
+    <section>
+        <h2>Payment Details</h2>
+        <form action="#" method="POST">
+            {%csrf_token%}
+            <label for="fname">Full Name:</label><br>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe" required><br><br>
+
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required><br><br>
+
+            <label for="adr">Address:</label><br>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required><br><br>
+
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city" placeholder="New York" required><br><br>
+
+            <label for="state">State:</label><br>
+            <input type="text" id="state" name="state" placeholder="NY" required><br><br>
+
+            <label for="zip">Zip:</label><br>
+            <input type="text" id="zip" name="zip" placeholder="10001" required><br><br>
+
+            <label for="cname">Name on Card:</label><br>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe" required><br><br>
+
+            <label for="ccnum">Credit Card Number:</label><br>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required><br><br>
+
+            <label for="expmonth">Exp Month:</label><br>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September" required><br><br>
+
+            <label for="expyear">Exp Year:</label><br>
+            <input type="text" id="expyear" name="expyear" placeholder="2024" required><br><br>
+
+            <label for="cvv">CVV:</label><br>
+            <input type="text" id="cvv" name="cvv" placeholder="352" required><br><br>
+
+            <label for="contact-method">Preferred Contact Method:</label><br>
+            <input type="radio" id="email-contact" name="contact-method" value="Email" checked>
+            <label for="email-contact">Email</label><br>
+            <input type="radio" id="phone-contact" name="contact-method" value="Phone">
+            <label for="phone-contact">Phone</label><br><br>
+
+            <button type="submit">Continue to Checkout</button><br><br>
+        </form>
+    </section>
+{% endblock %}

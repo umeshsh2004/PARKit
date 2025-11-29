@@ -1,0 +1,334 @@
+/*_______________________________master_template_css_________________________________*/
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Audiowide&family=Dancing+Script:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap');
+
+h1 {font-family:Josefin Sans; letter-spacing:2px; text-align: center;}
+h2 {font-family: Bona Nova SC; letter-spacing:1px; margin: 15px;}
+p {font-family: Shadows Into Light; letter-spacing:1px; margin-left: 30px; margin-right: 15px; font-size: 18px;}
+a {color:white;}
+a:hover {color:blue;}
+address {letter-spacing: 1px;}
+ul {font-family: Shadows Into Light; font-size:18px;}
+header {color: white; background-color: black; padding: 10px; margin-top:0px;}
+footer {text-align:center; background-color: black; color:white; margin-bottom:0px; padding: 10px; margin:0px;}
+body {margin: 0px; background-color:black; color:white;}
+.toggle {margin-top:0px; margin: 0px; padding: 0px;}
+.nav_a {display:block; text-decoration:none; padding:10px 15px;}
+.nav_a:hover {color:#4caf50;}
+.nav_li {display: inline; font-family: Bona Nova SC; font-size:20px;}
+.nav_ul {justify-content: space around; display:flex;}
+.slogan {font-family: Dancing Script; text-align:right; letter-spacing:2px;}
+section {border:7px solid gray; border-radius:5px; padding:10px 15px;}
+button {background-color: black; border-radius:5px; float:right; padding:5px;}
+.button1 {text-align:center}
+
+/*____________________________________________________________________________________*/
+
+.register {
+    border: 10px solid gray;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 25%;
+}
+.rgbtn {
+    background-color: black; border-radius:5px; padding:15px;
+}
+
+/*______________________________________________________________________*/
+
+
+/*___________________________homepage css_____________________________*/
+/* Base styling for all sections */
+section {
+    border: 10px solid #333;
+    border-radius: 5px;
+    padding: 15px 20px;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    /*display: flex;*/
+    /*align-items: flex-start;*/
+    overflow: hidden;
+    transition: transform 0.4s ease, background-color 0.3s ease;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode:overlay;
+}
+
+/* Smooth scaling animation on hover */
+section:hover {
+    transform: scale(1.02);
+    background-color: #201f1f;
+}
+
+/* Specific styling for the introduction section */
+.introduction {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode:overlay;
+}
+
+/* Text styling */
+.introduction h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.introduction p {
+    flex: 1;
+    margin-right: 140px; /* Space for the image */
+    line-height: 1.6;
+    font-size: 1.1em;
+    color: #d3d3d3;
+}
+
+/* Image slot styling */
+.image-slot {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+}
+
+/* Smooth zoom effect on image hover */
+.image-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.image-slot img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .introduction p {
+        margin-right: 0;
+    }
+    .image-slot {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+
+/* Base styling for Features section */
+.features {
+    border: 10px solid #333;
+    border-radius: 5px;
+    padding: 15px 20px;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    transition: transform 0.4s ease, background-color 0.3s ease;
+}
+
+/* Section hover effect */
+.features:hover {
+    transform: scale(1.02);
+    background-color: #2b2b2b;
+}
+
+/* Feature item styling */
+.feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+/* Text styling within each feature */
+.feature p {
+    flex: 1;
+    font-size: 1.2em;
+    color: #d3d3d3;
+    margin-right: 140px; /* Space for image */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .feature {
+        flex-direction: column;
+        text-align: center;
+    }
+    .feature p {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .image-slot {
+        position: relative;
+        margin-top: 5px;
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/*______________________________________________________________________*/
+
+
+/*___________________________login page css_____________________________*/
+
+/* Login form container styling */
+.login-container {
+    width: 300px;
+    padding: 30px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Title of the form */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #f0f0f0;
+}
+
+/* Input field styling */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #b3b3b3;
+}
+
+.input-group input {
+    width: 90%;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #f0f0f0;
+}
+
+.input-group input:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+/* Button styling */
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #45a049;
+}
+
+/* Link to sign up */
+.signup-link {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.signup-link a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/*__________________________________________________________________________________________*/
+
+
+/*___________________________register page css______________________________________________*/
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #B0B0B0;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+    color: #E0E0E0;
+}
+.form-group input::placeholder {
+    color: #757575;
+}
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.form-group button:hover {
+    background-color: #45a049;
+}
+.login-link {
+    color: #4caf50;
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+}
+.login-link:hover {
+    color: #4caf50;
+    text-decoration: underline;
+}
+
+/*__________________________________________________________________________________________*/
+
+
+/*___________________________contact us page css______________________________________________*/
+
+
+
+
+/*__________________________________________________________________________________________*/
+
+
+/*___________________________services page css______________________________________________*/
+
+
+
+
+/*__________________________________________________________________________________________*/
+
+
+/*___________________________about us page css______________________________________________*/
+
+.abhi {border-radius:50%; width:200px; height:200px; float: right; border-style:solid; padding: 10px;}
+.sid {border-radius:50%; width:200px; height:200px; float: left; border-style:solid; padding: 10px;}
+.umesh {border-radius:50%; width:200px; height:200px; float:right; border-style:solid; padding: 10px;}
+.sum {border-radius:50%; width:200px; height:200px; float:left; border-style:solid; padding: 10px;}
+
+/*__________________________________________________________________________________________*/

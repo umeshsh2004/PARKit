@@ -1,0 +1,106 @@
+{% extends 'master.html' %}
+{% block title %}User Dashboard{% endblock %}
+{% block content %}
+<h1>Welcome, {{ user.username }}</h1>
+<hr>
+<h2 style="text-align:center; background-image: url('https://th.bing.com/th/id/OIP.zjpitRrwNda57JHsIOdTJgHaHa?rs=1&pid=ImgDetMain');">Reserve a Parking Slot</h2>
+<section style="background-image: url('https://static.vecteezy.com/system/resources/previews/025/515/340/original/parking-top-view-garage-floor-with-cars-from-above-city-parking-lot-with-free-space-cartoon-street-carpark-with-various-vehicles-illustration-vector.jpg');">
+<form method="post">
+    {% csrf_token %}
+    <label for="slot_id">Select Slot:</label>
+    <select name="slot_id" required>
+        {% for slot in slots %}
+            <option value="{{ slot.id }}">Slot {{ slot.slot_number }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <label for="start_time">Start Time:</label>
+    <input type="datetime-local" name="start_time" required>
+    <br>
+    <br>
+    <label for="end_time">End Time:</label>
+    <input type="datetime-local" name="end_time" required>
+    <br>
+    <br>
+    <button type="submit" name="reserve_slot" style="color:white; text-align:center; padding:10px;">Reserve</button>
+</form>
+</section>
+<hr>
+<section style="background-image: url('https://i.pinimg.com/originals/2c/73/29/2c7329560702d29cbe9af756e730b464.jpg')">
+<h2 style="text-align:center;">Your Reservations</h2>
+<ul>
+    {% for reservation in reservations %}
+        <li>
+            Slot: {{ reservation.slot.slot_number }} | 
+            Start: {{ reservation.start_time }} | 
+            End: {{ reservation.end_time }}
+            <br>
+            {% if not reservation.feedback %}
+                <form method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
+                    <input type="text" name="feedback" placeholder="Submit Feedback">
+                    <br><br>
+                    <button type="submit" name="submit_feedback" style="color:white; text-align:center; padding:10px;">Submit</button>
+                </form>
+            {% else %}
+            <br><br>
+                Feedback: {{ reservation.feedback }}
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No reservations found.</li>
+    {% endfor %}
+    <br>
+</ul>
+</section>
+<hr>
+<section>
+<h2 style="text-align:center;">Your Transactions</h2>
+<table border="1" style="border:5px solid white;">
+    <tr>
+        <th>Transaction ID</th>
+        <th>Reservation Slot</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.id }}</td>
+            <td>{{ transaction.reservation.slot.slot_number }}</td>
+            <td>${{ transaction.amount }}</td>
+            <td>{{ transaction.transaction_date }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4">No transactions found.</td>
+        </tr>
+    {% endfor %}
+</table>
+</section>
+<style>
+    form {
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    ul li {
+        margin-bottom: 10px;
+    }
+</style>
+
+{% endblock %}

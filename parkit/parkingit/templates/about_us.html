@@ -1,0 +1,51 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+    <header>
+        <h1>About Us</h1>
+        <p style="text-align:center;">Know the team behind PARKit. 😎</p>
+    </header>
+
+    <section>
+        <h2>Our Team</h2>
+        <p>
+            We are a group of students passionate about leveraging technology to solve real-world problems. Our team members include:
+        </p>
+        <ul>
+            <li>Siddharth B N</li>
+            <li>Abhishek</li>
+            <li>Umesh SH</li>
+            <li>Sumanth G</li>
+        </ul>
+        <div style="padding:10px;">
+            <img src="{% static 'imgs/team_members/sid.jpg' %}" class='sid'>
+            <img src="{% static 'imgs/team_members/abhi.jpg' %}" class='abhi'>
+            <img src="{% static 'imgs/team_members/umesh.jpg' %}" class='umesh'>
+            <img src="{% static 'imgs/team_members/sum.jpg' %}" class='sum'>
+        </div>
+    </section>
+
+    <section>
+        <h2>Purpose</h2>
+        <p>
+            The purpose of creating this Car Parking Reservation System is to streamline the parking experience for users by offering a platform that allows easy reservations. We aim to reduce the time and effort spent on finding parking spaces, especially in busy areas.
+        </p>
+    </section>
+
+    <section>
+        <h2>Our Vision and Outcome</h2>
+        <p>
+            Through this project, we aim to develop a fully functional web application that provides a seamless and user-friendly way to reserve parking slots. The outcome of creating this webpage is to:
+        </p>
+        <ul>
+            <li>Offer an accessible reservation system for parking.</li>
+            <li>Provide real-time updates on parking availability.</li>
+            <li>Enhance our skills in web development, project management, database management.</li>
+            <li>Contribute to solving a common issue faced by daily commuters and visitors.</li>
+        </ul>
+        <p>
+            We hope that this project serves as a meaningful step towards utilizing technology for practical and helpful solutions.
+        </p>
+    </section>
+{% endblock %}

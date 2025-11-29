@@ -1,0 +1,111 @@
+{% extends 'master.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h1>Admin Dashboard</h1><br>
+<hr>
+<section style="background-image: url('https://www.bannerengineering.com/us/en/industries/traffic-and-parking.img.png');"><h2>Create Parking Slot</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="slot_number">Slot Number:</label>
+    <input type="text" name="slot_number" required>
+    <br><br>
+    <label for="location">Location:</label>
+    <input type="text" name="location" required>
+    <br><br>
+    <button type="submit" name="create_slot" style="color:white; text-align:center; padding:10px;">Create Slot</button>
+</form></section>
+<hr>
+<section style="background-image: url('https://media.giphy.com/media/77F1Ogb2A1fy0LESQO/giphy.gif'); background-size: cover; background-position: center;">
+<h2>Available Slots</h2>
+<ul>
+    {% for slot in slots %}
+        <li>
+            Slot: {{ slot.slot_number }} | Location: {{ slot.location }}
+            <form method="post" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="slot_id" value="{{ slot.id }}">
+                <button type="submit" name="delete_slot" style="color:white; text-align:center; padding:10px;">Delete</button>
+            </form>
+        </li>
+    {% empty %}
+        <li>No slots available.</li><br>
+    {% endfor %}
+</ul><br><hr>
+</section>
+<hr>
+<section>
+<h2>Reservations</h2>
+<table border="1" style="border:5px solid white;">
+    <tr>
+        <th>User</th>
+        <th>Slot</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Feedback</th>
+    </tr>
+    {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation.user.username }}</td>
+            <td>{{ reservation.slot.slot_number }} ({{ reservation.slot.location }})</td>
+            <td>{{ reservation.start_time }}</td>
+            <td>{{ reservation.end_time }}</td>
+            <td>{{ reservation.feedback|default:"None" }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5">No reservations found.</td>
+        </tr>
+    {% endfor %}
+</table>
+</section><hr>
+<section>
+<h2>Transactions</h2>
+<table border="1" style="border:5px solid white;">
+    <tr>
+        <th>User</th>
+        <th>Slot</th>
+        <th>Amount</th>
+        <th>Duration (Hours)</th>
+        <th>Transaction Date</th>
+    </tr>
+    {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.user.username }}</td>
+            <td>{{ transaction.reservation.slot.slot_number }} ({{ transaction.reservation.slot.location }})</td>
+            <td>${{ transaction.amount }}</td>
+            <td>{{ transaction.duration_in_hours|floatformat:2 }}</td>
+            <td>{{ transaction.transaction_date }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5">No transactions found.</td>
+        </tr>
+    {% endfor %}
+</table>
+</section>
+<hr>
+<style>
+    form {
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    ul li {
+        margin-bottom: 10px;
+    }
+</style>
+
+{% endblock %}

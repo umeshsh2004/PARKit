@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: parkit-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn parkit.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: parkit.settings
+    staticPublishPath: staticfiles
+    disk:
+      name: data
+      mountPath: /data
+
+# SQLite3 database persistence for Render
+# The following ensures db.sqlite3 is stored on a persistent disk
+# Update your settings.py DATABASES to use /data/db.sqlite3 in production if needed
